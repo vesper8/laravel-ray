@@ -51,6 +51,8 @@ class OriginFactory
                 return false;
             });
 
+        $indexOfRay += config('laravel-ray.backtrace_offset', 0);
+
         /** @var Frame|null $rayFrame */
         $rayFrame = $frames[$indexOfRay] ?? null;
 

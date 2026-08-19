@@ -69,6 +69,11 @@ class OriginFactory
             $originFrame = $frames[$indexOfRay + $framesAbove] ?? null;
         }
 
+        // Skip custom wrapper functions (roy, blueroy, etc.) in CoreGlobalHelpers.php
+        if ($originFrame && Str::endsWith($originFrame->file, 'CoreGlobalHelpers.php')) {
+            $originFrame = $frames[$indexOfRay + 2] ?? null;
+        }        
+
         if (! $rayFrame) {
             return null;
         }
